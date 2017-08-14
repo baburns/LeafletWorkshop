@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title> FOSS4G Leaflet Workshop </title>
+      <link rel="stylesheet" href="main.css" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    </head>
+  <body>
+    <H1>Example</H1>
+	<div id="map"></div>
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script>
+		//initialize the map         
+		var map = L.map('map').setView([42.3600825, -71.0588801], 2);
+  		var boston = L.marker([42.349239, -71.041342]).addTo(map);
+  		var bospopup= "Boston";
+  		boston.bindPopup(bospopup);
+  		var amsterdam = L.marker([52.3702, 4.8952]).addTo(map);
+  		var amstPopup=("Amsterdam?");
+  		amsterdam.bindPopup(amstPopup);
+  		var bermuda = L.marker([32.3078, -64.7505]).addTo(map);
+  		var capeverde = L.marker([16.5388, -23.0418]).addTo(map);
+  		var circle = L.circle([16.5388, -23.0418], 500000,{
+  			color:'red',
+  			fillColor:'#f03',
+  			fillOpacity: 0.25
+  		}).addTo(map);
+  		var polygon = L.polygon([
+  			[32.3078, -64.7505],
+  			[42.349239, -71.041342],
+  			[52.3702, 4.8952],
+  			[16.5388, -23.0418]
+  		]).addTo(map);
+		//Create baselayer - tiles         
+		/*var backgroundMap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
+		  attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+		  maxZoom: 19
+		  }*/
+		var backgroundMap = L.tileLayer('http://sea-atlases.org/maps/tiles/18833852/{z}/{x}/{-y}.png',{
+		  attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+		  maxZoom: 4
+		  }
+
+		);
+  
+		backgroundMap.addTo(map);
+		</script>
+  </body>
+</html>
